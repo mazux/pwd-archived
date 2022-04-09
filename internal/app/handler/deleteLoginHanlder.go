@@ -6,11 +6,11 @@ import (
 	"github.com/MAZEN-Kenjrawi/pwd/internal/model/repository"
 )
 
-type DeleteLoginHanlder struct {
+type DeleteLoginHandler struct {
 	profileRepo repository.ProfileRepo
 }
 
-func (h DeleteLoginHanlder) Hanle(cmd command.DeleteLogin) error {
+func (h DeleteLoginHandler) Handle(cmd command.DeleteLogin) error {
 	profile, err := h.profileRepo.FindByUsername(cmd.ProfileUsername)
 	if err != nil {
 		return err

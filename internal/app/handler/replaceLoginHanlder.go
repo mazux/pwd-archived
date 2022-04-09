@@ -6,11 +6,11 @@ import (
 	"github.com/MAZEN-Kenjrawi/pwd/internal/model/repository"
 )
 
-type ReplaceLoginHanler struct {
+type ReplaceLoginHandler struct {
 	profileRepo repository.ProfileRepo
 }
 
-func (h ReplaceLoginHanler) Hanle(cmd command.ReplaceLogin) error {
+func (h ReplaceLoginHandler) Handle(cmd command.ReplaceLogin) error {
 	profile, err := h.profileRepo.FindByUsername(cmd.ProfileUsername)
 	if err != nil {
 		return err

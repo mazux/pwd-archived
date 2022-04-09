@@ -12,4 +12,5 @@ A simple password manager for my personal use.
 
 ## Queries
 
+- Get domain login
 - Search domain login

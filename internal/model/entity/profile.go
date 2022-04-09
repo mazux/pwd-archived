@@ -12,6 +12,16 @@ type Profile struct {
 	Logins   []*Login    `json:"logins"`
 }
 
+func (p *Profile) GetLogin(domain string) (*Login, error) {
+	for _, login := range p.Logins {
+		if login.Domain == domain {
+			return login, nil
+		}
+	}
+
+	return nil, fmt.Errorf(fmt.Sprintf("unable to find login information for domain %s", domain))
+}
+
 func (p *Profile) ReplaceLogin(domain string, newCredentials value.Credentials) error {
 	if err := p.DeleteLogin(domain); err != nil {
 		return err

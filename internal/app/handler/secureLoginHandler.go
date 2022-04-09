@@ -7,11 +7,11 @@ import (
 	"github.com/MAZEN-Kenjrawi/pwd/internal/model/repository"
 )
 
-type SecureLoginHanler struct {
+type SecureLoginHandler struct {
 	profileRepo repository.ProfileRepo
 }
 
-func (h SecureLoginHanler) Hanle(cmd command.SecureLogin) error {
+func (h SecureLoginHandler) Handle(cmd command.SecureLogin) error {
 	profile, err := h.profileRepo.FindByUsername(cmd.ProfileUsername)
 	if err != nil {
 		return err
