@@ -10,11 +10,11 @@ type Login struct {
 	Password value.Password `json:"-"`
 }
 
-func CreateLogin(domain, username, password string) (*Login, error) {
-	encryptedPassword, err := value.Encrypt(password, value.NewKey(username))
+func CreateLogin(domain string, credentials value.Credentials) (*Login, error) {
+	encryptedPassword, err := value.Encrypt(credentials.Password, value.NewKey(credentials.Username))
 	if err != nil {
 		return nil, err
 	}
 
-	return &Login{domain, username, encryptedPassword}, nil
+	return &Login{domain, credentials.Username, encryptedPassword}, nil
 }
