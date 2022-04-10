@@ -19,7 +19,7 @@ func (p *Profile) GetLogin(domain string) (*Login, error) {
 		}
 	}
 
-	return nil, fmt.Errorf(fmt.Sprintf("unable to find login information for domain %s", domain))
+	return nil, fmt.Errorf("unable to find login information for domain %s", domain)
 }
 
 func (p *Profile) ReplaceLogin(domain string, newCredentials value.Credentials) error {
@@ -47,7 +47,7 @@ func (p *Profile) DeleteLogin(domain string) error {
 		}
 	}
 
-	return fmt.Errorf(fmt.Sprintf("unable to find login information for domain %s", domain))
+	return fmt.Errorf("unable to find login information for domain %s", domain)
 }
 
 func NewProfile(username, secret string) (*Profile, error) {
