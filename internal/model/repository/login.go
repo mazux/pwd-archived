@@ -6,5 +6,5 @@ import (
 )
 
 type LoginRepo interface {
-	FindAllBy(string, ...value.NullableString) ([]*entity.Login, error)
+	FindAllBy(string, value.NullableString, value.NullableString) ([]*entity.Login, error)
 }

@@ -7,9 +7,9 @@ import (
 )
 
 type Profile struct {
-	Username string      `json:"username"`
-	Secret   *value.Hash `json:"-"`
-	Logins   []*Login    `json:"logins"`
+	Username string     `json:"username"`
+	Secret   value.Hash `json:"-"`
+	Logins   []*Login   `json:"logins"`
 }
 
 func (p *Profile) GetLogin(domain string) (*Login, error) {
@@ -51,7 +51,7 @@ func (p *Profile) DeleteLogin(domain string) error {
 }
 
 func NewProfile(username, secret string) (*Profile, error) {
-	hash, err := value.HashFromString(secret)
+	hash, err := value.HashString(secret)
 	if err != nil {
 		return nil, err
 	}

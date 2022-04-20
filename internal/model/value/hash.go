@@ -2,23 +2,21 @@ package value
 
 import (
 	"crypto/sha512"
-	"hash"
+	"encoding/hex"
 )
 
-type Hash struct {
-	hash hash.Hash `json:"-"`
+type Hash NullableString
+
+func HashFromString(str string) Hash {
+	return Hash{str}
 }
 
-func (h *Hash) Equals(hash Hash) bool {
-	return h.hash == hash.hash
-}
-
-func HashFromString(str string) (*Hash, error) {
+func HashString(str string) (Hash, error) {
 	hash := sha512.New()
 	_, err := hash.Write([]byte(str))
 	if err != nil {
-		return nil, err
+		return Hash{}, err
 	}
 
-	return &Hash{hash}, nil
+	return Hash{hex.EncodeToString(hash.Sum(nil))}, nil
 }
