@@ -8,11 +8,11 @@ import (
 )
 
 type GetLoginHandler struct {
-	profileRepo repository.ProfileRepo
+	ProfileRepo repository.ProfileRepo
 }
 
 func (h GetLoginHandler) Handle(cmd query.GetLogin) (*entity.Login, error) {
-	profile, err := h.profileRepo.FindByUsername(cmd.ProfileUsername)
+	profile, err := h.ProfileRepo.FindByUsername(cmd.ProfileUsername)
 	if err != nil {
 		return nil, err
 	}

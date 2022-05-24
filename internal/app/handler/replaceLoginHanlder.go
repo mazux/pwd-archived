@@ -7,16 +7,16 @@ import (
 )
 
 type ReplaceLoginHandler struct {
-	profileRepo repository.ProfileRepo
+	ProfileRepo repository.ProfileRepo
 }
 
 func (h ReplaceLoginHandler) Handle(cmd command.ReplaceLogin) error {
-	profile, err := h.profileRepo.FindByUsername(cmd.ProfileUsername)
+	profile, err := h.ProfileRepo.FindByUsername(cmd.ProfileUsername)
 	if err != nil {
 		return err
 	}
 
 	profile.ReplaceLogin(cmd.Domain, cmd.NewCredentials)
 
-	return h.profileRepo.Save(profile)
+	return h.ProfileRepo.Save(profile)
 }

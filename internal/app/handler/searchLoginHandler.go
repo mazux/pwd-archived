@@ -8,9 +8,9 @@ import (
 )
 
 type SearchLoginHandler struct {
-	loginRepo repository.LoginRepo
+	LoginRepo repository.LoginRepo
 }
 
 func (h SearchLoginHandler) Handle(cmd query.SearchLogin) ([]*entity.Login, error) {
-	return h.loginRepo.FindAllBy(cmd.ProfileUsername, cmd.Domain, cmd.Username)
+	return h.LoginRepo.FindAllBy(cmd.ProfileUsername, cmd.Domain, cmd.Username)
 }

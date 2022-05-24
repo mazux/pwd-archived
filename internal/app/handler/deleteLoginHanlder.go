@@ -7,11 +7,11 @@ import (
 )
 
 type DeleteLoginHandler struct {
-	profileRepo repository.ProfileRepo
+	ProfileRepo repository.ProfileRepo
 }
 
 func (h DeleteLoginHandler) Handle(cmd command.DeleteLogin) error {
-	profile, err := h.profileRepo.FindByUsername(cmd.ProfileUsername)
+	profile, err := h.ProfileRepo.FindByUsername(cmd.ProfileUsername)
 	if err != nil {
 		return err
 	}

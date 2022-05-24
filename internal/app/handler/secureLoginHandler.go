@@ -8,11 +8,11 @@ import (
 )
 
 type SecureLoginHandler struct {
-	profileRepo repository.ProfileRepo
+	ProfileRepo repository.ProfileRepo
 }
 
 func (h SecureLoginHandler) Handle(cmd command.SecureLogin) error {
-	profile, err := h.profileRepo.FindByUsername(cmd.ProfileUsername)
+	profile, err := h.ProfileRepo.FindByUsername(cmd.ProfileUsername)
 	if err != nil {
 		return err
 	}
@@ -24,5 +24,5 @@ func (h SecureLoginHandler) Handle(cmd command.SecureLogin) error {
 
 	profile.Logins = append(profile.Logins, newLogin)
 
-	return h.profileRepo.Save(profile)
+	return h.ProfileRepo.Save(profile)
 }
